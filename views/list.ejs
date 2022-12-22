@@ -5,8 +5,31 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=h1, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <h1> It is a <%= bugun %> </h1>
+  <div class="box" id="heading">
+<h1> <%= thisDay %> </h1>
+  </div>
+  <div class="box2" id="heading2">
+    <h1> Add the tasks u want to add below: </h1>
+  </div>
+  <div class="box">
+  <% for (let i=0; i<newAddedItems.length;i++) { %>
+    <div class="item">
+      <input type="checkbox">
+<p>
+  <%= newAddedItems[i] %>
+</p>
+    </div>
+    
+    <% }; %>
+<form class="item" action="/" method="post">
+  <input type="text" name="addedItem" placeholder="new task" autocomplete="off"></input>
+  <button type="submit">+</button>
+</form>
+  </div>
+  
+  
 </body>
 </html>

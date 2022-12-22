@@ -4,17 +4,25 @@ const ejs = require("ejs");
 const app = express();
 
 app.set('view engine', 'ejs');
-
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.static('public'));
+let items = [];
 app.get("/", (req, res)=> {
   let today = new Date();
-  let bugun = today.getDay();
-  let day = "";
-  hafta = ['yakshanba', 'dushanba', 'seshanba', 'chorshanba', 'payshanba', 'juma', 'shanba'];
+  var options = {
+    weekday: 'long',
+    day: 'numeric',
+    month: 'long'
+  };
+  let day = today.toLocaleDateString('en-US', options);
+  
+  res.render('list', {thisDay: day, newAddedItems: items});
+});
 
-  for (i=0;i<bugun;i++) {
-    day = hafta[i+1]
-    }
-    res.render('list', {bugun: day});
+app.post("/", (req, res)=> {
+  item = req.body.addedItem;
+  items.push(item);
+  res.redirect('/');
 });
 
 app.listen(3333, ()=> {
