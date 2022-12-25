@@ -17,26 +17,31 @@ app.get("/", (req, res)=> {
   };
   var day = today.toLocaleDateString('en-US', options);
   
-  res.render('list', {thisDay: day, newAddedItems: items});
+  res.render('list', {listTitle: day, newAddedItems: items, css: "css/styles.css"});
 });
 
 app.post("/", (req, res)=> {
+  
   let item = req.body.addedItem;
+  if (req.body.list === "University list") {
+    universityItems.push(item);
+    res.redirect('/university');
+  } else {
   items.push(item);
   res.redirect('/');
+  };
+  
 });
 
 app.get("/university", (req, res)=> {
-  res.render('list', {uniDay: day, uniItems: universityItems})
+  res.render('list', {listTitle: "University list", newAddedItems: universityItems, css: "css/styles-uni.css"})
 });
 
-app.post('/university', (req, res)=> {
-let uniItem = req.body.addedUniItem;
-universityItems.push(uniItem);
-res.redirect('/university');
-})
+app.get("/about", (req, res)=> {
+  res.render("about", {css: "css/styles-about.css"});
+}); 
 
 app.listen(3333, ()=> {
-  console.log("Server yugurib yuribdi");
+  console.log("Server is running on port 3333");
 });
 
