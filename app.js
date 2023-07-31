@@ -1,4 +1,3 @@
-const serverless = require('serverless-http');
 const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
@@ -46,5 +45,4 @@ app.listen(3333, ()=> {
   console.log("Server is running on port 3333");
 });
 
-module.exports.handler = serverless(app);
 
