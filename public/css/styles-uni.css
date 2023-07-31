@@ -107,3 +107,31 @@ html {
     color: rgba(0, 0, 0, 0.5);
     text-align: center;
   }
+
+  .navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #54aa71;
+    padding: 10px;
+    box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+  }
+  
+  .navbar-links {
+    display: flex;
+    list-style: none;
+    align-items: center;
+  }
+  
+  .navbar-links a {
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 10px;
+    font-size: 16px;
+    transition: color 0.3s ease;
+  }
+  
+  .navbar-links a:hover {
+    color: #E4E9FD;
+  }
